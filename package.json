@@ -11,16 +11,13 @@
   "build": {
     "appId": "com.fenyxn.labmanagement",
     "productName": "Fenyxn Lab Management",
-    "icon": "assets/icon.png",
+    "author": "Fenyxn Lab",
     "win": {
-      "target": "nsis",
-      "icon": "assets/icon.png"
+      "target": "nsis"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "installerIcon": "assets/icon.png",
-      "uninstallerIcon": "assets/icon.png",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "Fenyxn Lab Management"
