@@ -2,7 +2,8 @@ const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 
 // ── Config ────────────────────────────────────────────────────────────────────
-const BACKEND_URL = 'https://35.254.182.189';   // GCP server — change to domain when ready
+const APP_URL = 'http://35.254.182.189:3000';   // GCP frontend (Next.js on port 3000)
+const isDev = process.argv.includes('--dev');
 
 // ── Window ────────────────────────────────────────────────────────────────────
 let mainWindow;
@@ -14,22 +15,40 @@ function createWindow() {
     minWidth: 1024,
     minHeight: 600,
     title: 'Nidan Lab',
-    icon: path.join(__dirname, 'assets', 'icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
     },
-    show: false,                  // show after ready-to-show to avoid white flash
+    show: false,
   });
 
   // Load the web app from GCP
-  mainWindow.loadURL(BACKEND_URL);
+  mainWindow.loadURL(APP_URL);
+
+  // Open DevTools in dev mode or when page fails to load
+  if (isDev) mainWindow.webContents.openDevTools();
 
   // Show window once fully loaded
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
     mainWindow.maximize();
+  });
+
+  // Show error page if URL fails to load
+  mainWindow.webContents.on('did-fail-load', (event, errorCode, errorDescription, url) => {
+    mainWindow.webContents.loadURL(`data:text/html,
+      <html><body style="font-family:sans-serif;padding:40px;background:#f8fafc">
+      <h2 style="color:#ef4444">Cannot connect to server</h2>
+      <p>URL: <code>${url}</code></p>
+      <p>Error: ${errorDescription} (${errorCode})</p>
+      <p>Please check your internet connection and try restarting the app.</p>
+      <button onclick="window.location.href='${APP_URL}'"
+        style="padding:10px 20px;background:#3b82f6;color:white;border:none;border-radius:6px;cursor:pointer">
+        Retry
+      </button>
+      </body></html>`);
+    mainWindow.show();
   });
 
   // Open external links in default browser, not Electron
