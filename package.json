@@ -2,6 +2,7 @@
   "name": "fenyxn-lab-management",
   "version": "0.2.0",
   "description": "Fenyxn Lab Management System",
+  "author": "Fenyxn Lab",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -11,7 +12,6 @@
   "build": {
     "appId": "com.fenyxn.labmanagement",
     "productName": "Fenyxn Lab Management",
-    "author": "Fenyxn Lab",
     "win": {
       "target": "nsis"
     },
