@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 
 // ── Config ────────────────────────────────────────────────────────────────────
-const APP_URL = 'http://35.254.182.189:3000';   // GCP frontend (Next.js on port 3000)
+const APP_URL = 'https://lab.fenyxn.in';
 const isDev = process.argv.includes('--dev');
 
 // ── Window ────────────────────────────────────────────────────────────────────
@@ -14,7 +14,8 @@ function createWindow() {
     height: 800,
     minWidth: 1024,
     minHeight: 600,
-    title: 'Nidan Lab',
+    title: 'Fenyxn Lab Management',
+    icon: path.join(__dirname, 'assets', 'icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,

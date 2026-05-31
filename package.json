@@ -1,8 +1,7 @@
 {
-  "name": "nidan-lab",
-  "version": "1.0.1",
-  "description": "Nidan Laboratory Management System",
-  "author": "Fenyxn Lab",
+  "name": "fenyxn-lab-management",
+  "version": "0.2.0",
+  "description": "Fenyxn Lab Management System",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -10,17 +9,21 @@
     "build:dir": "electron-builder --win --x64 --dir"
   },
   "build": {
-    "appId": "com.nidanlab.lms",
-    "productName": "Nidan Lab",
+    "appId": "com.fenyxn.labmanagement",
+    "productName": "Fenyxn Lab Management",
+    "icon": "assets/icon.png",
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "assets/icon.png"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
+      "installerIcon": "assets/icon.png",
+      "uninstallerIcon": "assets/icon.png",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Nidan Lab"
+      "shortcutName": "Fenyxn Lab Management"
     },
     "publish": {
       "provider": "github",
