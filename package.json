@@ -12,14 +12,11 @@
     "appId": "com.nidanlab.lms",
     "productName": "Nidan Lab",
     "win": {
-      "target": "nsis",
-      "icon": "assets/icon.ico"
+      "target": "nsis"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "installerIcon": "assets/icon.ico",
-      "uninstallerIcon": "assets/icon.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "Nidan Lab"
@@ -27,7 +24,7 @@
     "publish": {
       "provider": "github",
       "owner": "Fenyxn",
-      "repo": "Laboratory-Management-System"
+      "repo": "laboratory_release"
     }
   },
   "dependencies": {
